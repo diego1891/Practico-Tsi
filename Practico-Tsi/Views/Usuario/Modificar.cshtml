@@ -1,0 +1,61 @@
+@model Practico_Tsi.Models.Usuario
+@{
+
+}
+
+<form class="w-40" asp-action="Modificar" method="post">
+
+    <h2>Modificar Usuario</h2>
+    <input type="hidden" class="input" asp-for="Id">
+
+
+
+    <div class="input-container">
+        <label asp-for="Nombre" class="w-40">Nombre</label>
+        <input type="text" class="input" asp-for="Nombre">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="Nombre"></span>
+    </div>
+
+    <div class="input-container">
+        <label asp-for="Alias" class="w-40">Alias</label>
+        <input type="text" class="input" asp-for="Alias">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="Alias"></span>
+    </div>
+
+    <div class="input-container">
+        <label asp-for="Email" class="w-40">Email</label>
+        <input type="text" class="input" asp-for="Email">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div class="input-container">
+        <label asp-for="Biografia" class="w-40">Biografia</label>
+        <input type="text" class="input" asp-for="Biografia">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="Biografia"></span>
+    </div>
+
+
+    @if (TempData["msg"] != null)
+    {
+        <div
+            style="background-color:rgb(177, 228, 249); padding: 0.5rem;font-size: 17px; color: var(--primary-color); border-radius: 5px; box-shadow: 0 3px 3px 0 rgb(4, 70, 96);">
+            @TempData["msg"]
+        </div>
+    }
+
+    <div class="input-container">
+        <button class="btn btn-default">Guardar</button>
+        <a class="btn btn-sec" asp-action="Index">Volver</a>
+    </div>
+
+
+
+</form>

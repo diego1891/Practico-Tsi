@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Practico_Tsi</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <nav class="nav-bar">
+      <div class="logo">
+        Users
+      </div>
+      <ul class="nav-link">
+          <li><a class="active" href="/Home/Index">Inicio</a></li>
+          <li><a href="/Home/About">About</a></li>
+
+          <li>
+            <a href="#">Admin <i class="fa fa-caret-down"></i></a>
+            
+            <ul class="dropdown-nav-link">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario"
+                                    asp-action="Index">Usuarios</a>
+            </ul>
+          </li>
+        
+      </ul>
+    </nav>
+
+
+    <div class="container">
+
+        @RenderBody()
+    
+
+
+    </div>
+
+        <footer>
+            &#169; Programacion Web y Diseno 
+        </footer>
+</body>
+</html>

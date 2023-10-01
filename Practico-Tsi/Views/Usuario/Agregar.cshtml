@@ -1,0 +1,53 @@
+@model Practico_Tsi.Models.Usuario
+@{
+}
+
+<form class="contenido" style="width : 40%" asp-action="Agregar" method="post">
+    <h2>Agregar Usuario</h2>
+
+    <div class="inputs cont" style="width: 100%; display: flex; padding: 0.4rem 0;">
+        <label asp-for="Nombre" class="name" style="width : 40%">Nombre</label>
+        <input type="text" class="input" asp-for="Nombre">
+    </div>
+    <div class="valid" style="font-size: 16px; padding: 0.3rem 0; padding-left: 28.5%; color: red;">
+        <span asp-validation-for="Nombre"></span>
+    </div>
+
+    <div class="inputs cont" style="width: 100%; display: flex; padding: 0.4rem 0;">
+        <label asp-for="Alias" class="alias" style="width : 40%">Alias</label>
+        <input type="text" class="input" asp-for="Alias">
+    </div>
+    <div class="valid" style="font-size: 16px; padding: 0.3rem 0; padding-left: 28.5%; color: red;">
+        <span asp-validation-for="Alias"></span>
+    </div>
+
+    <div class="inputs cont" style="width: 100%; display: flex; padding: 0.4rem 0;">
+        <label asp-for="Email" class="email" style="width : 40%">Email</label>
+        <input type="text" class="input" asp-for="Email">
+    </div>
+    <div class="valid" style="font-size: 16px; padding: 0.3rem 0; padding-left: 28.5%; color: red;">
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div class="inputs cont" style="width: 100%; display: flex; padding: 0.4rem 0;">
+        <label asp-for="Biografia" class="bio" style="width : 40%">Biografia</label>
+        <input type="text" class="input" asp-for="Biografia">
+    </div>
+    <div class="valid" style="font-size: 16px; padding: 0.3rem 0; padding-left: 28.5%; color: red;">
+        <span asp-validation-for="Biografia"></span>
+    </div>
+
+
+    @if (TempData["msg"] != null)
+    {
+        <div style="background-color:rgb(177, 228, 249); padding: 0.5rem;font-size: 17px; color: var(--primary-color); border-radius: 5px; box-shadow: 0 3px 3px 0 rgb(4, 70, 96);">
+            @TempData["msg"]
+        </div>
+    }
+
+    <div class="inputcont" style="width: 100%; display: flex; padding: 0.4rem 0;">
+        <button class="btn btn-default">Guardar</button>
+        <a class="btn btn-sec" asp-action="Index">Volver</a>
+    </div>
+
+</form>

@@ -1,0 +1,46 @@
+@model Practico_Tsi.Models.UsuarioList
+@{
+
+}
+<!--<section class="search-bar">
+    <form >
+        <input type="text" placeholder="Buscar usuario">
+        <a class="btn" asp-action="BuscarPorAlias">
+            <i class="fa fa-search"></i>
+        </a>
+    </form>
+</section>
+-->
+<div class="tbl-container">
+    <h2>Lista de usuarios</h2>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Alias</th>
+            <th>Email</th>
+            <th>Biografia</th>
+        </tr>
+        @foreach (var usuario in Model.ListaUsuarios!)
+        {
+                <tr>
+                    <td>@usuario.Nombre</td>
+                    <td>@usuario.Alias</td>
+                    <td>@usuario.Email</td>
+                    <td>@usuario.Biografia</td>
+                    <td>
+                        <a class="btn btn-sec" asp-action="Modificar" asp-route-id="@usuario.Id">
+                            <i class="fa fa-edit"></i>
+                        </a>
+
+                        <a class="btn btn-danger" asp-action="Borrar" asp-route-id="@usuario.Id">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+
+        }
+    </table>
+    <div class="input-container">
+        <a class="btn btn-sec" asp-action="Agregar">Agregar</a>
+    </div>
+</div>

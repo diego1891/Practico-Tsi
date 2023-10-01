@@ -1,0 +1,51 @@
+@model Practico_Tsi.Models.Usuario
+@{
+
+}
+
+<form class="w-40" asp-action="BuscarPorAlias" method="post">
+
+    <h2>Ver Usuario</h2>
+    <input type="hidden" class="input" asp-for="Id">
+
+
+@if(Model !=null)
+{
+ <div class="input-container">
+        <label asp-for="Nombre" class="w-40">Nombre</label>
+        <a type="text" class="input" asp-for="Nombre">
+    </div>
+
+    <div class="input-container">
+        <label asp-for="Alias" class="w-40">Alias</label>
+        <a type="text" class="input" asp-for="Alias">
+    </div>
+
+    <div class="input-container">
+        <label asp-for="Email" class="w-40">Email</label>
+        <a type="text" class="input" asp-for="Email">
+    </div>
+
+    <div class="input-container">
+        <label asp-for="Biografia" class="w-40">Biografia</label>
+        <a type="text" class="input" asp-for="Biografia">
+    </div>
+
+
+    @if (TempData["msg"] != null)
+    {
+        <div
+            style="background-color:rgb(177, 228, 249); padding: 0.5rem;font-size: 17px; color: var(--primary-color); border-radius: 5px; box-shadow: 0 3px 3px 0 rgb(4, 70, 96);">
+            @TempData["msg"]
+        </div>
+    }
+
+    <div class="input-container">
+        <a class="btn btn-sec" asp-action="Index">Volver</a>
+    </div>
+
+}
+   
+
+
+</form>
