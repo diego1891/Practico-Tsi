@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PracticoMobile.Views.UsuarioDetailPage"
+             xmlns:model="clr-namespace:PracticoMobile.Models.Backend"
+             xmlns:vm="clr-namespace:PracticoMobile.ViewModel"
+             x:DataType="vm:UsuarioDetailViewModel"
+             Title="Detalles del Usuario"
+             Shell.NavBarIsVisible="False">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <VerticalStackLayout 
+         Grid.Row="1" Margin="20">
+            <Label 
+             Text="{Binding Usuario.Nombre}"
+             FontSize="Medium"
+             />
+            <Label
+             Text="{Binding Usuario.Alias}"
+             FontSize="Subtitle"
+             />
+            <Label 
+                Text="{Binding Usuario.Biografia}"
+                FontSize="Medium">
+            </Label>
+
+        </VerticalStackLayout>
+        <HorizontalStackLayout 
+         Grid.Row="2" 
+         VerticalOptions="EndAndExpand" 
+         HorizontalOptions="Center"
+         Spacing="30"
+         >
+
+        </HorizontalStackLayout>
+    </Grid>
+
+
+
+
+</ContentPage>

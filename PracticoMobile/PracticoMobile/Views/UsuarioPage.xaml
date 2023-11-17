@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PracticoMobile.Views.UsuarioPage"
+             xmlns:model="clr-namespace:PracticoMobile.Models.Backend"
+             xmlns:vm="clr-namespace:PracticoMobile.ViewModel"
+             x:DataType="vm:UsuarioViewModel"
+             Title="Buscar Usuario"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Shell.NavBarIsVisible="False"
+             >
+    
+    
+    
+    <VerticalStackLayout>
+        <Grid
+        BackgroundColor="#1d94ab"
+        >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <SearchBar
+            Grid.Column="1"
+            Margin="5"
+            TextColor="Black"
+            BackgroundColor="White"
+            Placeholder="Buscar Usuario"
+            Text="{Binding SearchText, Mode=TwoWay}"
+            >
+                <SearchBar.Behaviors>
+                    <toolkit:UserStoppedTypingBehavior
+                    Command="{Binding EjecutarBusqueda}"
+                    StoppedTypingTimeThreshold="1000"
+                    MinimumLengthThreshold="3"
+                    ShouldDismissKeyboardAutomatically="True"
+                    />
+                </SearchBar.Behaviors>
+            </SearchBar>
+
+        </Grid>
+
+        <CollectionView
+        Margin="0,10,0,10"
+        SelectionMode="Single"
+        ItemsSource="{Binding Usuarios}"
+        SelectedItem="{Binding UsuarioSeleccionado, Mode=TwoWay}"
+        >
+
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="5" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:UsuarioResponse">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Padding="10" FontSize="Medium" Text="{Binding Nombre}" />
+                        <Label Grid.Row="0" Grid.Column="1" Padding="10" FontSize="Medium" Text=" " />
+
+                        <Label Grid.Row="1" Grid.Column="0" Padding="10" FontSize="Medium" Text="{Binding Alias}"/>
+                        <Label Grid.Row="1" Grid.Column="1" Padding="10" FontSize="Medium" Text=" " />
+
+                        <Label Grid.Row="2" Grid.Column="0" Padding="10" FontSize="Medium" Text="{Binding Email}"/>
+                        <Label Grid.Row="2" Grid.Column="1" Padding="10" FontSize="Medium" Text=" " />
+
+                        <Label Grid.Row="3" Grid.Column="0" Padding="10" FontSize="Medium" Text="{Binding Biografia}"/>
+                        <Label Grid.Row="3" Grid.Column="1" Padding="10" FontSize="Medium" Text=" " />
+
+
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
