@@ -1,0 +1,22 @@
+.carta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0px 2px 2px 3px rgba(0, 0, 0, 0.2);
+    border: 2px solid;
+    border-radius: 20px;
+    margin: 20px auto;
+    width: 60%;
+    background-color: white;
+    opacity: 0.9;
+}
+.carta strong {
+    display: inline-block; /* Esto hará que "Nombre:", "Alias:", etc. se muestren en la misma línea que el valor. */
+    margin-right: 5px; /* Puedes ajustar el margen para separar el nombre de su valor. */
+}
+
+.waiting {
+    text-align: center;
+    padding: 20px;
+  }
