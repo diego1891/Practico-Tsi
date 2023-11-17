@@ -29,12 +29,12 @@ public class UsuarioController : Controller
     [HttpPost]
     public IActionResult Agregar(Usuario usuario)
     {
-        if(!ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
             return View(usuario);
         }
         var resultado = usuarioService.AgregarUsuario(usuario);
-        if(resultado)
+        if (resultado)
         {
             TempData["msg"] = "Se agrego el usuario";
             return RedirectToAction(nameof(Agregar));
@@ -51,12 +51,12 @@ public class UsuarioController : Controller
     [HttpPost]
     public IActionResult Modificar(Usuario usuario)
     {
-        if(!ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
             return View(usuario);
         }
         var resultado = usuarioService.ModificarUsuario(usuario.Id, usuario);
-        if(resultado)
+        if (resultado)
         {
             TempData["msg"] = "Se modificó el usuario";
             return RedirectToAction(nameof(Modificar));
@@ -65,38 +65,39 @@ public class UsuarioController : Controller
         return View(usuario);
     }
 
-    public IActionResult Modificar(int id){
+    public IActionResult Modificar(int id)
+    {
         var usuario = usuarioService.ObtenerPorId(id);
 
         return View(usuario);
     }
 
     [HttpPost]
-public IActionResult BuscarPorAlias(Usuario usuario)
-{
-    if (!ModelState.IsValid)
+    public IActionResult BuscarPorAlias(Usuario usuario)
     {
+        if (!ModelState.IsValid)
+        {
+            return View(usuario);
+        }
+
+        var resultado = usuarioService.BuscarPorAlias(usuario.Alias);
+
+        if (resultado != null)
+        {
+            TempData["msg"] = "Se encontró al usuario";
+            return RedirectToAction(nameof(BuscarPorAlias), new { alias = usuario.Alias });
+        }
+
+        TempData["msg"] = "Error buscando al usuario";
         return View(usuario);
     }
 
-    var resultado = usuarioService.BuscarPorAlias(usuario.Alias);
-
-    if (resultado != null)
+    [HttpGet]
+    public IActionResult BuscarPorAlias(string alias)
     {
-        TempData["msg"] = "Se encontró al usuario";
-        return RedirectToAction(nameof(BuscarPorAlias), new { alias = usuario.Alias });
+        var usuario = usuarioService.BuscarPorAlias(alias);
+        return View(usuario);
     }
-
-    TempData["msg"] = "Error buscando al usuario";
-    return View(usuario);
-}
-
-[HttpGet]
-public IActionResult BuscarPorAlias(string alias)
-{
-    var usuario = usuarioService.BuscarPorAlias(alias);
-    return View(usuario);
-}
     public IActionResult Borrar(int id)
     {
         Console.WriteLine("HOLA entra al borrar");

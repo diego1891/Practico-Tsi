@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Practico_Tsi.Models;
 
 namespace Practico_Tsi.Services.Usuarios;
@@ -11,6 +12,7 @@ public class UsuarioService : IUsuarioService
 {
     //Inyección de la DbContext
     private readonly DatabaseContext database;
+    
 
     public UsuarioService(DatabaseContext databaseAux)
     {
@@ -92,6 +94,11 @@ public class UsuarioService : IUsuarioService
 
     }
 
+    public List<Usuario> GetAllUsuarios()
+    {
+        var list = database.Usuarios.ToList();
+        return list;
+    }
     public UsuarioList listarUsuarios(string term = "", bool paginacion = false, int paginaActual = 0)
     {
         try
@@ -132,6 +139,7 @@ public class UsuarioService : IUsuarioService
         try
         {
             Usuario usuario = database.Usuarios.SingleOrDefault(u => u.Alias == alias)!;
+            Console.WriteLine(usuario.Alias);
             return usuario;
         }
         catch(Exception)
@@ -139,6 +147,13 @@ public class UsuarioService : IUsuarioService
             throw new Exception("Error en la búsqueda por Alias del usuario");
         }
 
+    }
 
+    public async Task<IEnumerable<Usuario>> GetUsuarios(string busqueda)
+    {
+        var usuarios = from c in database.Usuarios!
+                        where EF.Functions.Like(c.Alias!, $"%{busqueda}%")
+                        select c;
+        return await usuarios.ToListAsync();
     }
 }

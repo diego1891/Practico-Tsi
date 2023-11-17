@@ -11,8 +11,11 @@ public interface IUsuarioService
     bool AgregarUsuario(Usuario usuario);
     bool ModificarUsuario(int id, Usuario usuario);
     bool BorrarUsuario(int id);
+    List<Usuario> GetAllUsuarios();
     Usuario ObtenerPorId(int id);
     UsuarioList listarUsuarios(string term ="",bool paginacion = false, int paginaActual = 0);
     Usuario BuscarPorAlias(string alias);
+
+    Task <IEnumerable<Usuario>> GetUsuarios(string busqueda);
 
 }

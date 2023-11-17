@@ -48,4 +48,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseCors(corsPolicyName);
+
 app.Run();
